@@ -658,15 +658,6 @@ function startGame() {
     }
     requestAnimationFrame(gameLoop);
 }
-    
-    canvas.width = window.innerWidth / RES;
-    canvas.height = window.innerHeight / RES;
-    
-    if (!isMobile) {
-        canvas.requestPointerLock();
-    }
-    requestAnimationFrame(gameLoop);
-}
 
 function initLevel() {
     generateMaze();
