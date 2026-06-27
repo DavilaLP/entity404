@@ -654,6 +654,10 @@ function startGame() {
     // Dynamic resolution for mobile to prevent freezing
     RES = isMobile ? 4 : 2;
     
+    if (isMobile) {
+        document.getElementById('mobile-controls').style.display = 'block';
+    }
+    
     canvas.width = window.innerWidth / RES;
     canvas.height = window.innerHeight / RES;
     
@@ -909,6 +913,7 @@ function update(dt) {
             document.getElementById('win-screen').style.display = 'flex';
             document.getElementById('final-time').innerText = `Tiempo: ${timerEl.innerText}`;
             document.exitPointerLock();
+            document.getElementById('mobile-controls').style.display = 'none';
         }
     }
 
@@ -1071,6 +1076,7 @@ function triggerGameOver() {
         document.getElementById('jumpscare').style.display = 'none';
         document.getElementById('lose-screen').style.display = 'flex';
         document.exitPointerLock();
+        document.getElementById('mobile-controls').style.display = 'none';
     }, 2000);
 }
 
@@ -1263,6 +1269,7 @@ window.addEventListener('keydown', e => {
             document.exitPointerLock();
             document.getElementById('menu-screen').style.display = 'flex';
             document.getElementById('menu-screen').querySelector('h1').innerText = 'PAUSA';
+            document.getElementById('mobile-controls').style.display = 'none';
         }
     }
 });
@@ -1272,6 +1279,9 @@ function resumeGame() {
     if (gameState === 'PAUSED') {
         gameState = 'PLAY';
         document.getElementById('menu-screen').style.display = 'none';
+        if (isMobile) {
+            document.getElementById('mobile-controls').style.display = 'block';
+        }
         canvas.requestPointerLock();
         requestAnimationFrame(gameLoop);
     }
