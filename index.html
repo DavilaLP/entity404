@@ -396,7 +396,7 @@ let player = {
     vz: 0
 };
 let keys = {};
-let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Touch/i.test(navigator.userAgent) || ('ontouchstart' in window);
+let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 0);
 let mouseX = 0;
 let startTime = 0;
 let lastTime = 0;
