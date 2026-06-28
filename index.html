@@ -578,6 +578,8 @@ function stopAmbientMusic() {
 const VILLAIN_IMAGE_URL = 'villain.jpg.jpeg'; // Actualizado según el nombre real del archivo
 const AMBIENT_AUDIO_URL = 'backroom house  7 weeks and 3 days.mp3';
 const BOOMER_AUDIO_URL = 'Boomer Sonido.mp3';
+const SCREAM_AUDIO_URL = 'GRITO SCREAM.mp3';
+const screamAudio = new Audio(SCREAM_AUDIO_URL);
 
 const CREEPY_MESSAGES = [
     "EL ACORDEÓN SUENA...", "PUEDO OÍR LA MÚSICA", "Viene por ti", 
@@ -1099,6 +1101,10 @@ function triggerGameOver() {
     gameState = 'LOSE';
     document.getElementById('jumpscare').style.display = 'flex';
     playScreamSound();
+    if (screamAudio) {
+        screamAudio.currentTime = 0;
+        screamAudio.play().catch(e => console.log("Scream audio failed", e));
+    }
     setTimeout(() => {
         document.getElementById('jumpscare').style.display = 'none';
         document.getElementById('lose-screen').style.display = 'flex';
