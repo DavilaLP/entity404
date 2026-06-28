@@ -1101,6 +1101,9 @@ function triggerGameOver() {
     gameState = 'LOSE';
     document.getElementById('jumpscare').style.display = 'flex';
     playScreamSound();
+    if (staticGain) {
+        staticGain.gain.setValueAtTime(0, audioCtx.currentTime);
+    }
     if (screamAudio) {
         screamAudio.currentTime = 0;
         screamAudio.play().catch(e => console.log("Scream audio failed", e));
