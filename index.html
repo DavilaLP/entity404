@@ -823,7 +823,7 @@ if (isMobile) {
         lookStick.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
         
         // Rotate camera based on horizontal movement
-        const rotationSensitivity = 0.005;
+        const rotationSensitivity = 0.002;
         player.dir += dx * rotationSensitivity;
     }, { passive: false });
 
